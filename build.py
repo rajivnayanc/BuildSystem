@@ -1,19 +1,20 @@
-def dfsUtil(graph, visited, curr):
-    visited[curr] = True
-    print(curr, end=' ')
-    for node in graph[curr]:
+def topoUtil(graph, visited, curr_node, topo):
+    visited[curr_node] = True
+    for node in graph[curr_node]:
         if visited[node]==False:
-            dfsUtil(graph,visited, node)
+            topoUtil(graph,visited, node, topo)
+    topo.append(curr_node)
     
-def dfs(graph, reverse=False):
+def topoLogicalPath(graph, reverse=False):
+    topo = [] # List to store topological Order
     visited = {node:False for node in graph.keys()}
     KEYS = list(graph.keys())
     if reverse:
         KEYS = KEYS[::-1]
-    for key in KEYS:
-        if visited[key]==False:
-            dfsUtil(graph, visited, key)
-
+    for node in KEYS:
+        if visited[node]==False:
+            topoUtil(graph, visited, node, topo)
+    return topo[::-1] # reverse the list and return
 
 graph1 = {
     "1":[ ],
@@ -34,10 +35,10 @@ graph2 = {
     "7":[ ]
 }
 print("Graph 1 without reversed:")
-dfs(graph1, reverse=False)
+print(*topoLogicalPath(graph1, reverse=False))
 print("\nGraph 1 with reversed:")
-dfs(graph1, reverse=True)
+print(*topoLogicalPath(graph1, reverse=True))
 print("\nGraph 2 without reversed:")
-dfs(graph2, reverse=False)
+print(*topoLogicalPath(graph2, reverse=False))
 print("\nGraph 2 with reversed:")
-dfs(graph2, reverse=True)
+print(*topoLogicalPath(graph2, reverse=True))
