@@ -1,7 +1,7 @@
-def dfsUtil(graph, visited, curr):
-    visited[curr] = True
-    print(curr, end=' ')
-    for node in graph[curr]:
+def dfsUtil(graph, visited, curr_node):
+    visited[curr_node] = True
+    print(curr_node, end=' ')
+    for node in graph[curr_node]:
         if visited[node]==False:
             dfsUtil(graph,visited, node)
     
