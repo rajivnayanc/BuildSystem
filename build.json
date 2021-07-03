@@ -1,0 +1,30 @@
+{
+    "A":{
+        "dep":["B"],
+        "cmd":"python A.py"
+    },
+    "B":{
+        "dep":["C","D", "E"],
+        "cmd":"python B.py"
+    },
+    "C":{
+        "dep":["E"],
+        "cmd":"python C.py"
+    },
+    "D":{
+        "dep":["E"],
+        "cmd":"python D.py"
+    },
+    "E":{
+        "dep":["F"],
+        "cmd":"python E.py"
+    },
+    "F":{
+        "dep":[],
+        "cmd":"python F.py"
+    },
+    "G":{
+        "dep":["D"],
+        "cmd":"python G.py"
+    }
+}
