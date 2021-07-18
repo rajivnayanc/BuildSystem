@@ -1,6 +1,10 @@
-
 import json
-app_name="B"
+f = open("build.json", "r")
+bSystem = json.load(f)
+
+output = '''
+import json
+app_name="{}"
 f = open("build.json", "r")
 bSystem = json.load(f)
 
@@ -17,3 +21,8 @@ for dep in dependencies:
 f = open(app_name+".txt","w")
 f.write(app_name)
 f.close() 
+'''
+for file in bSystem.keys():
+    f = open(file+".py","w")
+    f.write(output.format(file))
+    f.close()

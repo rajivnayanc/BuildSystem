@@ -1,6 +1,6 @@
 
 import json
-app_name="B"
+app_name="I"
 f = open("build.json", "r")
 bSystem = json.load(f)
 

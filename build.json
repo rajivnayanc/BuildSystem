@@ -1,30 +1,50 @@
 {
     "A":{
-        "dep":["B"],
+        "dependency":["B", "C", "F","G", "H"],
         "cmd":"python A.py"
     },
     "B":{
-        "dep":["C","D", "E"],
+        "dependency":["E"],
         "cmd":"python B.py"
     },
     "C":{
-        "dep":["E"],
+        "dependency":[],
         "cmd":"python C.py"
     },
     "D":{
-        "dep":["E"],
+        "dependency":["A", "B", "C"],
         "cmd":"python D.py"
     },
     "E":{
-        "dep":["F"],
+        "dependency":[],
         "cmd":"python E.py"
     },
     "F":{
-        "dep":[],
+        "dependency":["I"],
         "cmd":"python F.py"
     },
     "G":{
-        "dep":["D"],
+        "dependency":["I"],
         "cmd":"python G.py"
+    },
+    "H":{
+        "dependency":["I"],
+        "cmd":"python H.py"
+    },
+    "I":{
+        "dependency":[],
+        "cmd":"python I.py"
+    },
+    "J":{
+        "dependency":["D"],
+        "cmd":"python J.py"
+    },
+    "K":{
+        "dependency":["D"],
+        "cmd":"python K.py"
+    },
+    "L":{
+        "dependency":["D"],
+        "cmd":"python L.py"
     }
 }

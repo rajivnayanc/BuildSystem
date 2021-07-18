@@ -21,10 +21,14 @@ def topoLogicalPath(graph, reverse=False):
 
 f = open("build.json", "r")
 bSystem = json.load(f)
+
 graph = {key:[] for key in bSystem.keys()}
+
 for key, value in bSystem.items():
-    for pNode in value["dep"]:
+    for pNode in value["dependency"]:
         graph[pNode].append(key)
+
 topoSorted = topoLogicalPath(graph)
-for echo in [bSystem[node]["cmd"] for node in topoSorted]:
-    os.system(echo)
+
+for node in topoSorted:
+    os.system(bSystem[node]["cmd"])
